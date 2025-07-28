@@ -7,6 +7,8 @@ import '../widgets/education_form.dart';
 import '../widgets/section_title.dart';
 
 class ResumeFormScreen extends StatefulWidget {
+  const ResumeFormScreen({super.key});
+
   @override
   _ResumeFormScreenState createState() => _ResumeFormScreenState();
 }
@@ -46,9 +48,12 @@ class _ResumeFormScreenState extends State<ResumeFormScreen> {
     );
 
     final file = await PdfService.generateResume(resume);
-
     if (file != null) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('✅ Resume generated!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('✅ Resume generated!')),
+      );
+
+      // ✅ Just await the open call — don’t use it in if or assign it
       await OpenFilex.open(file.path);
     }
   }
@@ -81,7 +86,7 @@ class _ResumeFormScreenState extends State<ResumeFormScreen> {
             ...experiences.asMap().entries.map((entry) => ExperienceForm(
                   index: entry.key,
                   experience: entry.value,
-                  onChanged: (exp) => experiences[entry.key] = exp,
+                  onChanged: (exp) => setState(() => experiences[entry.key] = exp),
                 )),
             TextButton.icon(
               icon: Icon(Icons.add),
@@ -92,7 +97,7 @@ class _ResumeFormScreenState extends State<ResumeFormScreen> {
             ...educations.asMap().entries.map((entry) => EducationForm(
                   index: entry.key,
                   education: entry.value,
-                  onChanged: (edu) => educations[entry.key] = edu,
+                  onChanged: (edu) => setState(() => educations[entry.key] = edu),
                 )),
             TextButton.icon(
               icon: Icon(Icons.add),

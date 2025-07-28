@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import '../models/resume_model.dart';
 
-class ExperienceForm extends StatelessWidget {
+class EducationForm extends StatelessWidget {
   final int index;
-  final Experience experience;
-  final ValueChanged<Experience> onChanged;
+  final Education education;
+  final ValueChanged<Education> onChanged;
 
-  const ExperienceForm({
+  const EducationForm({
     super.key,
     required this.index,
-    required this.experience,
+    required this.education,
     required this.onChanged,
   });
 
@@ -18,11 +18,10 @@ class ExperienceForm extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Experience ${index + 1}', style: TextStyle(fontWeight: FontWeight.bold)),
-        _buildField('Company', experience.company, (v) => onChanged(experience.copyWith(company: v))),
-        _buildField('Role', experience.role, (v) => onChanged(experience.copyWith(role: v))),
-        _buildField('Duration', experience.duration, (v) => onChanged(experience.copyWith(duration: v))),
-        _buildField('Description', experience.description, (v) => onChanged(experience.copyWith(description: v))),
+        Text('Education ${index + 1}', style: TextStyle(fontWeight: FontWeight.bold)),
+        _buildField('Degree', education.degree, (v) => onChanged(education.copyWith(degree: v))),
+        _buildField('School', education.school, (v) => onChanged(education.copyWith(school: v))),
+        _buildField('Year', education.year, (v) => onChanged(education.copyWith(year: v))),
         SizedBox(height: 10),
       ],
     );

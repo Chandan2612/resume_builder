@@ -30,6 +30,20 @@ class Experience {
     required this.duration,
     required this.description,
   });
+
+  Experience copyWith({
+    String? company,
+    String? role,
+    String? duration,
+    String? description,
+  }) {
+    return Experience(
+      company: company ?? this.company,
+      role: role ?? this.role,
+      duration: duration ?? this.duration,
+      description: description ?? this.description,
+    );
+  }
 }
 
 class Education {
@@ -42,4 +56,16 @@ class Education {
     required this.school,
     required this.year,
   });
+
+  Education copyWith({
+    String? degree,
+    String? school,
+    String? year,
+  }) {
+    return Education(
+      degree: degree ?? this.degree,
+      school: school ?? this.school,
+      year: year ?? this.year,
+    );
+  }
 }
