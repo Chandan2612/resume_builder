@@ -48,15 +48,13 @@ class _ResumeFormScreenState extends State<ResumeFormScreen> {
     );
 
     final file = await PdfService.generateResume(resume);
-    if (file != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('✅ Resume generated!')),
-      );
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('✅ Resume generated!')),
+    );
 
-      // ✅ Just await the open call — don’t use it in if or assign it
-      await OpenFilex.open(file.path);
+    // ✅ Just await the open call — don’t use it in if or assign it
+    await OpenFilex.open(file.path);
     }
-  }
 
   @override
   void dispose() {

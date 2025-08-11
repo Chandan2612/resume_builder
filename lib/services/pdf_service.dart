@@ -51,7 +51,7 @@ class PdfService {
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: [
                   pw.Text('${exp.role} at ${exp.company}', style: bodyStyle),
-                  pw.Text('${exp.duration}', style: pw.TextStyle(fontSize: 10, color: PdfColors.grey)),
+                  pw.Text(exp.duration, style: pw.TextStyle(fontSize: 10, color: PdfColors.grey)),
                   if (exp.description.isNotEmpty)
                     pw.Text(exp.description, style: bodyStyle),
                   pw.SizedBox(height: 6),
